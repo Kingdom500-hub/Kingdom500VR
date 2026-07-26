@@ -1,0 +1,1 @@
+console.log('Kingdom 500 loaded');
