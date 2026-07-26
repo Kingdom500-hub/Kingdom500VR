@@ -502,60 +502,82 @@ Fill out the application below or contact us directly on Discord.
 </p>
 
 <form
-class="applyForm"
-action="https://formspree.io/f/xlgqaeor"
-method="POST">
+    class="applyForm"
+    action="https://formspree.io/f/DEINE_FORM_ID"
+    method="POST">
 
-<div class="row">
+    <div class="row">
 
-<input
-type="text"
-name="player_name"
-placeholder="Player Name"
-required>
+        <input
+            type="text"
+            name="player_name"
+            placeholder="Player Name"
+            required>
 
-</div>
+        <input
+            type="text"
+            name="player_id"
+            placeholder="Player ID"
+            required>
 
-<div class="row">
+    </div>
 
-<div class=row">
-  <input
-type="text"
-name="player_id"
-placeholder="Player ID"
-required>
-  </div>
-  
-<input
-type="text"
-placeholder="Current Kingdom">
+    <div class="row">
 
-<input
-type="text"
-placeholder="Power">
+        <input
+            type="text"
+            name="current_kingdom"
+            placeholder="Current Kingdom"
+            required>
 
-</div>
+        <input
+            type="text"
+            name="power"
+            placeholder="Power"
+            required>
 
-<div class="row">
+    </div>
 
-<input
-type="text"
-placeholder="Kill Points">
+    <div class="row">
 
-<input
-type="text"
-placeholder="Main Troop (Infantry / Cavalry / Spear)">
+        <input
+            type="text"
+            name="kill_points"
+            placeholder="Kill Points"
+            required>
 
-</div>
+        <input
+            type="text"
+            name="main_troop"
+            placeholder="Main Troop (Infantry / Cavalry / Spear)"
+            required>
 
-<textarea
-placeholder="Tell us something about yourself..."></textarea>
+    </div>
 
-<button type="submit">
+    <div class="row">
 
-Submit Application
+        <input
+            type="text"
+            name="discord"
+            placeholder="Discord Username"
+            required>
 
-</button>
+        <input
+            type="text"
+            name="timezone"
+            placeholder="Timezone (e.g. CET / UTC+1)">
+
+    </div>
+
+    <textarea
+        name="message"
+        placeholder="Tell us something about yourself..."></textarea>
+
+    <button type="submit">
+
+        Submit Application
+
+    </button>
 
 </form>
 
