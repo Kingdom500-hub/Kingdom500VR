@@ -1,9 +1,4 @@
-Kingdom500 Website
+Place your logo in:
+images/logo.png
 
-1. Copy your uploaded images into images/:
-- logo.png
-- hero-left.png
-- hero-right.png
-
-2. Commit to GitHub.
-3. Enable GitHub Pages.
+Later we will replace the gradient hero with a custom Viking background.
