@@ -1,146 +1,125 @@
-// ==========================
-// KINGDOM 500
-// Animations
-// ==========================
+const canvas = document.getElementById("snow");
+const ctx = canvas.getContext("2d");
 
-const observer = new IntersectionObserver((entries)=>{
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
 
-entries.forEach(entry=>{
+window.addEventListener("resize", resize);
+resize();
 
-if(entry.isIntersecting){
+const flakes = [];
 
-entry.target.classList.add("show");
+const layers = [
+    {count:220,size:[0.8,1.5],speed:[0.15,0.30],opacity:[0.15,0.30]},
+    {count:140,size:[1.5,3],speed:[0.35,0.60],opacity:[0.25,0.50]},
+    {count:70,size:[3,6],speed:[0.8,1.4],opacity:[0.45,0.75]},
+    {count:18,size:[8,14],speed:[1.8,3],opacity:[0.75,1]}
+];
+
+function random(min,max){
+    return Math.random()*(max-min)+min;
+}
+
+layers.forEach((layer,index)=>{
+
+    for(let i=0;i<layer.count;i++){
+
+        flakes.push({
+
+            x:Math.random()*canvas.width,
+            y:Math.random()*canvas.height,
+
+            radius:random(layer.size[0],layer.size[1]),
+
+            speed:random(layer.speed[0],layer.speed[1]),
+
+            opacity:random(layer.opacity[0],layer.opacity[1]),
+
+            layer:index,
+
+            offset:Math.random()*1000
+
+        });
+
+    }
+
+});
+
+let time=0;
+
+function draw(){
+
+    time+=0.005;
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    flakes.forEach(f=>{
+
+        const wind =
+        Math.sin(time+f.offset)*0.6*(f.layer+1);
+
+        f.y+=f.speed;
+
+        f.x+=wind*0.3;
+
+        if(f.y>canvas.height+20){
+
+            f.y=-20;
+            f.x=Math.random()*canvas.width;
+
+        }
+
+        if(f.x>canvas.width+20)f.x=-20;
+        if(f.x<-20)f.x=canvas.width+20;
+
+        if(f.layer===3){
+
+            ctx.filter="blur(2px)";
+
+        }else{
+
+            ctx.filter="none";
+
+        }
+
+        const g=ctx.createRadialGradient(
+
+            f.x,
+            f.y,
+            0,
+
+            f.x,
+            f.y,
+            f.radius
+
+        );
+
+        g.addColorStop(0,`rgba(255,255,255,${f.opacity})`);
+        g.addColorStop(.5,`rgba(255,255,255,${f.opacity*0.4})`);
+        g.addColorStop(1,"rgba(255,255,255,0)");
+
+        ctx.fillStyle=g;
+
+        ctx.beginPath();
+
+        ctx.arc(
+
+            f.x,
+            f.y,
+            f.radius,
+            0,
+            Math.PI*2
+
+        );
+
+        ctx.fill();
+
+    });
+
+    requestAnimationFrame(draw);
 
 }
 
-});
-
-},{
-threshold:.2
-});
-
-document.querySelectorAll(".card").forEach(el=>observer.observe(el));
-document.querySelectorAll(".offerCard").forEach(el=>observer.observe(el));
-document.querySelectorAll(".requirement").forEach(el=>observer.observe(el));
-document.querySelectorAll(".statCard").forEach(el=>observer.observe(el));
-
-
-// ==========================
-// Smooth Navigation
-// ==========================
-
-document.querySelectorAll('nav a').forEach(anchor=>{
-
-anchor.addEventListener('click',function(e){
-
-e.preventDefault();
-
-const target=document.querySelector(this.getAttribute("href"));
-
-window.scrollTo({
-
-top:target.offsetTop-80,
-
-behavior:"smooth"
-
-});
-
-});
-
-});
-
-
-// ==========================
-// Navbar Background
-// ==========================
-
-window.addEventListener("scroll",()=>{
-
-const nav=document.querySelector("nav");
-
-if(window.scrollY>100){
-
-nav.style.background="rgba(0,0,0,.92)";
-
-}else{
-
-nav.style.background="rgba(0,0,0,.72)";
-
-}
-
-});
-
-
-// ==========================
-// Fade Animation
-// ==========================
-
-const animated=document.querySelectorAll(
-
-".card,.offerCard,.requirement,.statCard"
-
-);
-
-animated.forEach(item=>{
-
-item.style.opacity="0";
-
-item.style.transform="translateY(40px)";
-
-item.style.transition=".7s";
-
-});
-
-const fadeObserver=new IntersectionObserver(entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity="1";
-
-entry.target.style.transform="translateY(0px)";
-
-}
-
-});
-
-});
-
-animated.forEach(item=>{
-
-fadeObserver.observe(item);
-
-});
-
-
-// ==========================
-// Button Hover Glow
-// ==========================
-
-document.querySelectorAll(".goldButton").forEach(btn=>{
-
-btn.addEventListener("mouseenter",()=>{
-
-btn.style.boxShadow="0 0 40px rgba(214,176,75,.7)";
-
-});
-
-btn.addEventListener("mouseleave",()=>{
-
-btn.style.boxShadow="0 0 20px rgba(214,176,75,.25)";
-
-});
-
-});
-
-
-// ==========================
-// Future Features
-// ==========================
-
-// Counter Animation
-// Discord Integration
-// Gallery
-// Migration Countdown
-// Player Database
+draw();
