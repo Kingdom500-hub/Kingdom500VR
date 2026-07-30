@@ -141,7 +141,12 @@ enterButton.addEventListener("click", async () => {
     }
 
     entryOverlay.classList.add("hide");
+window.scrollTo({
+    top: 0,
+    behavior: "instant"
+});
 
+document.querySelector(".hero").focus();
     const small = document.querySelector(".hero-small");
     const title = document.querySelector(".heroLogo");
     const subtitle = document.querySelector(".hero-subtitle");
