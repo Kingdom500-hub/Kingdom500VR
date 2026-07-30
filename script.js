@@ -141,6 +141,7 @@ enterButton.addEventListener("click", async () => {
     }
 
     entryOverlay.classList.add("hide");
+    document.body.classList.remove("overlay-active");
 window.scrollTo({
     top: 0,
     behavior: "instant"
