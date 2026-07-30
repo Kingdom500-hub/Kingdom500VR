@@ -1069,3 +1069,8 @@ ENTRY OVERLAY
     transform:translateY(-3px);
 
 }
+body.overlay-active{
+
+    overflow: hidden;
+
+}
