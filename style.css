@@ -175,23 +175,7 @@ HERO
 
 /* -------------------------------- */
 
-.hero-divider{
 
-    width:120px;
-
-    height:2px;
-
-    margin: -18px auto;
-
-    background:
-    linear-gradient(
-        to right,
-        transparent,
-        #cfa84a,
-        transparent
-    );
-
-}
 
 /* -------------------------------- */
 
