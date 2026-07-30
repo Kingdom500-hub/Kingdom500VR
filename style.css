@@ -969,9 +969,9 @@ ENTRY OVERLAY
     justify-content:center;
     align-items:center;
 
-    background:rgba(0,0,0,.82);
+    background:rgba(0,0,0,.80);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(8px);
 
     z-index:99999;
 
@@ -982,95 +982,36 @@ ENTRY OVERLAY
 #entryOverlay.hide{
 
     opacity:0;
-
     visibility:hidden;
 
 }
 
-.entryContent{
+.entryImage{
 
     width:min(650px,90vw);
 
-    background:rgba(10,15,25,.90);
-
-    border:2px solid rgba(220,180,90,.45);
-
-    border-radius:20px;
-
-    padding:60px;
-
-    text-align:center;
-
-    box-shadow:
-        0 0 60px rgba(0,0,0,.55);
-
-}
-
-.entryLogo{
-
-    width:420px;
-
-    max-width:90%;
-
-    margin-bottom:30px;
-
-}
-
-.entryContent h1{
-
-    font-family:'Cinzel',serif;
-
-    color:#f0d388;
-
-    margin-bottom:20px;
-
-    font-size:42px;
-
-}
-
-.entryContent p{
-
-    color:#d7dde5;
-
-    line-height:1.8;
-
-    margin-bottom:35px;
-
-}
-
-#enterButton{
-
-    border:none;
-
     cursor:pointer;
 
-    border-radius:40px;
+    transition:
+        transform .35s ease,
+        filter .35s ease;
 
-    padding:18px 48px;
-
-    font-size:20px;
-
-    font-family:'Cinzel',serif;
-
-    font-weight:700;
-
-    background:linear-gradient(
-
-        #f7dd8b,
-
-        #c99831
-
-    );
+    filter:
+        drop-shadow(0 0 30px rgba(255,180,60,.25));
 
 }
 
-#enterButton:hover{
+.entryImage:hover{
 
-    transform:translateY(-3px);
+    transform:scale(1.03);
+
+    filter:
+        drop-shadow(0 0 45px rgba(255,200,90,.45));
 
 }
-body.overlay-active{
 
-    overflow: hidden;
+.entryImage:active{
+
+    transform:scale(.98);
 
 }
