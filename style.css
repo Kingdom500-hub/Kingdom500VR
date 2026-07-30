@@ -772,11 +772,11 @@ INTRO ANIMATION
 
 .heroLogo{
 
-    width:min(980px,88vw);
+    width:min(760px,78vw);
 
     display:block;
 
-    margin:-120px auto -120px;
+    margin:-55px auto -45px;
 
     opacity:0;
 
